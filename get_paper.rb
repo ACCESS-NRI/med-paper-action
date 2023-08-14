@@ -4,10 +4,26 @@ require "yaml"
 issue_id = ENV["ISSUE_ID"]
 repo_url = ENV["REPO_URL"]
 repo_branch = ENV["PAPER_BRANCH"]
-journal_alias = ENV["JOURNAL_ALIAS"]
 acceptance = ENV["COMPILE_MODE"] == "accepted"
 
-journal = Theoj::Journal.new(Theoj::JOURNALS_DATA[journal_alias.to_sym])
+# I must override the journal otherwise it looks in the wrong repo for the issue.
+# journal_alias = ENV["JOURNAL_ALIAS"]
+# journal = Theoj::Journal.new(Theoj::JOURNALS_DATA[journal_alias.to_sym])
+
+journal_data = {
+  doi_prefix: "00.00000",
+  url: "https://medportal-dev-6a745f452687.herokuapp.com/",
+  name: "ACCESS-NRI MedPortal",
+  alias: "MedPortal",
+  launch_date: "2023-08-14",
+  papers_repository: "ACCESS-NRI/med-recipes",
+  reviews_repository: "ACCESS-NRI/med-reviews",
+  deposit_url: "https://medportal-dev-6a745f452687.herokuapp.com/papers/api_deposit",
+  retract_url: "https://medportal-dev-6a745f452687.herokuapp.com/papers/api_retract"
+}
+
+journal = Theoj::Journal.new(journal_data)
+
 issue = Theoj::ReviewIssue.new(journal.data[:reviews_repository], issue_id)
 issue.paper = Theoj::Paper.from_repo(repo_url, repo_branch)
 submission = Theoj::Submission.new(journal, issue, issue.paper)
