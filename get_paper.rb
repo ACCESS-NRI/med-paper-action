@@ -14,7 +14,7 @@ journal_data = {
   doi_prefix: "10.00000",
   url: "https://medportal-dev-6a745f452687.herokuapp.com/",
   name: "ACCESS-NRI MedPortal",
-  alias: "MedPortal",
+  alias: "medportal",
   launch_date: "2023-08-14",
   papers_repository: "ACCESS-NRI/med-recipes",
   reviews_repository: "ACCESS-NRI/med-reviews",
