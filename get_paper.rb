@@ -11,7 +11,7 @@ acceptance = ENV["COMPILE_MODE"] == "accepted"
 # journal = Theoj::Journal.new(Theoj::JOURNALS_DATA[journal_alias.to_sym])
 
 journal_data = {
-  doi_prefix: "10.00000",
+  doi_prefix: "10.21105",
   url: "https://medportal-dev-6a745f452687.herokuapp.com/",
   name: "ACCESS-NRI MedPortal",
   alias: "medportal",
