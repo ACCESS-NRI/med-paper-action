@@ -69,7 +69,6 @@ runs:
       run: |
         bundle exec ruby ${{ github.action_path }}/get_paper.rb
 
-    - uses: actions/checkout@v3
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
 
