@@ -15,41 +15,41 @@ else
     raise "   !! ERROR: Failed to generate PDF file" if formats.include?("pdf")
   end
 
-  paper_crossref_path = File.dirname(paper_md_path)+"/paper.crossref"
-  if File.exist?(paper_crossref_path)
-    system("echo 'paper_crossref_path=#{paper_crossref_path}' >> $GITHUB_OUTPUT")
-    system("echo 'Success! Crossref XML file generated at: #{paper_crossref_path}'")
-  else
-    raise "   !! ERROR: Failed to generate Crossref XML file" if formats.include?("crossref")
-  end
+#  paper_crossref_path = File.dirname(paper_md_path)+"/paper.crossref"
+#  if File.exist?(paper_crossref_path)
+#    system("echo 'paper_crossref_path=#{paper_crossref_path}' >> $GITHUB_OUTPUT")
+#    system("echo 'Success! Crossref XML file generated at: #{paper_crossref_path}'")
+#  else
+#    raise "   !! ERROR: Failed to generate Crossref XML file" if formats.include?("crossref")
+#  end
 
-  paper_jats_path = File.dirname(paper_md_path)+"/paper.jats"
-  if File.exist?(paper_jats_path)
-    system("echo 'paper_jats_path=#{paper_jats_path}' >> $GITHUB_OUTPUT")
-    system("echo 'Success! JATS file generated at: #{paper_jats_path}'")
-  else
-    raise "   !! ERROR: Failed to generate JATS file" if formats.include?("jats")
-  end
+#  paper_jats_path = File.dirname(paper_md_path)+"/paper.jats"
+#  if File.exist?(paper_jats_path)
+#    system("echo 'paper_jats_path=#{paper_jats_path}' >> $GITHUB_OUTPUT")
+#    system("echo 'Success! JATS file generated at: #{paper_jats_path}'")
+#  else
+#    raise "   !! ERROR: Failed to generate JATS file" if formats.include?("jats")
+#  end
 
-  citation_file_path = File.dirname(paper_md_path)+"/CITATION.cff"
-  if File.exist?(citation_file_path)
-    system("echo 'citation_file_path=#{citation_file_path}' >> $GITHUB_OUTPUT")
-    system("echo 'Success! CITATION.cff file generated at: #{citation_file_path}'")
-  end
+#  citation_file_path = File.dirname(paper_md_path)+"/CITATION.cff"
+#  if File.exist?(citation_file_path)
+#    system("echo 'citation_file_path=#{citation_file_path}' >> $GITHUB_OUTPUT")
+#    system("echo 'Success! CITATION.cff file generated at: #{citation_file_path}'")
+#  end
 end
 
 
 # Check for warnings presence
-pdf_log_path = paper_pdf_path + ".log"
-crossref_log_path = paper_crossref_path + ".log"
-jats_log_path = paper_jats_path + ".log"
+#pdf_log_path = paper_pdf_path + ".log"
+#crossref_log_path = paper_crossref_path + ".log"
+#jats_log_path = paper_jats_path + ".log"
 
 warning_msgs = []
 
 log_files_paths = []
 #log_files_paths << pdf_log_path if formats.include?("pdf")
-log_files_paths << crossref_log_path if formats.include?("crossref")
-log_files_paths << jats_log_path if formats.include?("jats")
+#log_files_paths << crossref_log_path if formats.include?("crossref")
+#log_files_paths << jats_log_path if formats.include?("jats")
 
 begin
   log_files_paths.each do |log_file_path|
