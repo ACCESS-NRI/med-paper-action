@@ -68,8 +68,11 @@ runs:
         BUNDLE_GEMFILE: ${{ github.action_path }}/Gemfile
       run: |
         bundle exec ruby ${{ github.action_path }}/get_paper.rb
+
+    - uses: actions/checkout@v3
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
+
     - name: Build paper artifacts
       id: build-paper
       uses: ACCESS-NRI/med-make-recipe-action@main
