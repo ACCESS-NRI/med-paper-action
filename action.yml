@@ -60,12 +60,12 @@ runs:
       id: paper-finder
       shell: bash
       env:
-        ISSUE_ID: ${{ inputs.issue_id }}
+        # ISSUE_ID: ${{ inputs.issue_id }}
         REPO_URL: ${{ inputs.repository_url }}
         PAPER_BRANCH: ${{ inputs.branch }}
-        JOURNAL_ALIAS: ${{ inputs.journal }}
-        COMPILE_MODE: ${{ inputs.compile_mode }}
-        BUNDLE_GEMFILE: ${{ github.action_path }}/Gemfile
+        # JOURNAL_ALIAS: ${{ inputs.journal }}
+        # COMPILE_MODE: ${{ inputs.compile_mode }}
+        # BUNDLE_GEMFILE: ${{ github.action_path }}/Gemfile
       run: |
         bundle exec ruby ${{ github.action_path }}/get_paper.rb
     - name: Build paper artifacts
