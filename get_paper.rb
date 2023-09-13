@@ -2,6 +2,7 @@ require "open3"
 require "fileutils"
 require "securerandom"
 require "uri"
+require "find"
 
 # This entire page is taken from the theoj repository.
 
