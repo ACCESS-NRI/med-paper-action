@@ -45,6 +45,7 @@ issue.paper = NewPaper.from_repo(repo_url, repo_branch)
 submission = Theoj::Submission.new(journal, issue, issue.paper)
 
 paper_path = issue.paper.paper_path
+system("echo 'paper_path=#{paper_path}.' >> $GITHUB_ENV")
 
 if paper_path.nil?
   system("echo 'CUSTOM_ERROR=Paper file not found.' >> $GITHUB_ENV")
