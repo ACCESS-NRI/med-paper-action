@@ -57,7 +57,7 @@ end
 
 path_to_ipynb = find_paper_path(rand_local_path)
 
-if paper_path.nil?
+if path_to_ipynb.nil?
   system("echo 'CUSTOM_ERROR=Paper file not found.' >> $GITHUB_ENV")
   raise "   !! ERROR: Paper file not found"
 else
