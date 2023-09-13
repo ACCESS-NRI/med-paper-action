@@ -7,9 +7,6 @@ repo_branch = ENV["PAPER_BRANCH"]
 acceptance = ENV["COMPILE_MODE"] == "accepted"
 
 # I must override the journal otherwise it looks in the wrong repo for the issue.
-# journal_alias = ENV["JOURNAL_ALIAS"]
-# journal = Theoj::Journal.new(Theoj::JOURNALS_DATA[journal_alias.to_sym])
-
 journal_data = {
   doi_prefix: "10.21105",
   url: "https://medportal-dev-6a745f452687.herokuapp.com/",
@@ -22,10 +19,28 @@ journal_data = {
   retract_url: "https://medportal-dev-6a745f452687.herokuapp.com/papers/api_retract"
 }
 
-journal = Theoj::Journal.new(journal_data)
+# I must overwrite self.find_paper_path so it finds jupyter notebooks, not markdown files.
+class NewPaper < Theoj::Paper
+  def self.find_paper_path(search_path)
+    paper_path = nil
 
+    if Dir.exist? search_path
+      Find.find(search_path).each do |path|
+        if path =~ /paper\.ipynb$/
+          paper_path = path
+          break
+        end
+      end
+    end
+
+    paper_path
+  end
+
+
+journal = Theoj::Journal.new(journal_data)
 issue = Theoj::ReviewIssue.new(journal.data[:reviews_repository], issue_id)
-issue.paper = Theoj::Paper.from_repo(repo_url, repo_branch)
+issue.paper = NewPaper.from_repo(repo_url, repo_branch)
+
 submission = Theoj::Submission.new(journal, issue, issue.paper)
 
 paper_path = issue.paper.paper_path
