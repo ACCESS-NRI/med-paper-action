@@ -35,6 +35,7 @@ class NewPaper < Theoj::Paper
 
     paper_path
   end
+end
 
 
 journal = Theoj::Journal.new(journal_data)
