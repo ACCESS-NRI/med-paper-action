@@ -1,5 +1,3 @@
-require 'json'
-
 paper_md_path = ARGV[0].to_s
 formats = ARGV[1].to_s.downcase.split(",")
 
