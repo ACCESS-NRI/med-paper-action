@@ -35,6 +35,18 @@ class NewPaper < Theoj::Paper
 
     paper_path
   end
+
+  private
+
+    def find_paper(path)
+      if path.to_s.strip.empty?
+        setup_local_repo
+        @paper_path = NewPaper.find_paper_path(local_path)
+      else
+        @paper_path = path
+      end
+    end
+
 end
 
 
