@@ -36,6 +36,10 @@ class NewPaper < Theoj::Paper
     paper_path
   end
 
+  def self.from_repo(repository_url, branch = "")
+    NewPaper.new(repository_url, branch, nil)
+  end
+  
   private
 
     def find_paper(path)
