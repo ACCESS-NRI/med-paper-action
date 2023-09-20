@@ -70,7 +70,7 @@ runs:
         bundle exec ruby ${{ github.action_path }}/get_paper.rb
     - name: Build paper artifacts
       id: build-paper
-      uses: ACCESS-NRI/med-make-recipe-actio@main
+      uses: ACCESS-NRI/med-make-recipe-action@main
       with:
         journal: ${{ inputs.journal_template }}
         paper-path: ${{ steps.paper-finder.outputs.paper_file_path }}
